@@ -23,7 +23,6 @@ TrelloClone.Views.newBoardForm = Backbone.View.extend({
       success: function (){
         TrelloClone.currentUser.boards().add(board);
         this.remove();
-        Backbone.history.navigate("", {trigger: true});
       }.bind(this)
     })
   }

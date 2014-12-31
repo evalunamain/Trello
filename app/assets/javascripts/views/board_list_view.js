@@ -1,25 +1,19 @@
 TrelloClone.Views.boardListView = Backbone.CompositeView.extend({
   template: JST["lists/boardItem"],
 
-  tagName: "ul",
+  tagName: "li",
 
   className: "board-list",
 
   initialize: function (){
-
-    var listView = this;
-    this.collection.each(function (listItem) {
-      listView.addListItemSubView(listItem);
-    });
-    console.log("making new list view");
-
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.collection, "sync", this.render);
   },
 
-  addListItemSubView: function (listItem) {
-    var listItemView = new TrelloClone.Views.listItem({
-      model: listItem});
-    this.addSubview("ul.board-list", listItemView);
+  addListItemSubView: function (card) {
+    var cardView = new TrelloClone.Views.card({
+      model: card});
+    this.addSubview("ul.board-list", cardView);
   },
 
   events: {
@@ -27,6 +21,12 @@ TrelloClone.Views.boardListView = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    var listView = this;
+
+    this.collection.each(function (card) {
+      listView.addListItemSubView(card);
+    });
+
     var listView = this.template({list: this.model});
     this.$el.append(listView);
     this.attachSubviews();

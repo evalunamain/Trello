@@ -19,11 +19,10 @@
 body, div, ul, li, form {
   margin: 0;
   padding: 0;
-  border: 0;
+  // border: 0;
   color: inherit;
   text-decoration: none
 }
-
 
 #main {
   margin: 20px;
@@ -40,19 +39,23 @@ ul {
   padding: 5px;
 }
 
-ul.board-list {
+li.board-list {
+  // border: 2px solid black;
   display: inline;
   float: left;
   margin: 10px;
   width: 300px
 }
 
-li.list-item {
+li.list-card {
+  border: 2px solid black;
   display: block;
+  padding: 10px 0;
+  margin: 10px 0;
   width: 250px;
-  height: 150px;
-  margin: auto
+  height: 50px;
 }
+
 
 .board {
   padding: 20px
