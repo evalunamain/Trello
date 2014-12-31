@@ -1,0 +1,9 @@
+<div class="backdrop">
+  <div id="main"></div>
+  <div id="sidebar-right"></div>
+</div>
+<script>$(TrelloClone.initialize);
+<% if signed_in? %>
+window.TrelloClone.userId = <%= current_user.id %>
+<% end %>
+</script>
